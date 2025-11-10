@@ -1,0 +1,85 @@
+.test-image-container {
+  background: radial-gradient(circle at bottom, #1a1a1a, #000);
+  color: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  width: 380px;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+  position: relative;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
+}
+
+.test-image-message {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.test-image-message.right {
+  justify-content: flex-end;
+}
+
+.test-image-message.left {
+  justify-content: flex-start;
+}
+
+.test-image-avatar img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.test-image-bubble {
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  max-width: 75%;
+  line-height: 1.4;
+}
+
+.test-image-bubble.light {
+  background: linear-gradient(145deg, #e5e5e5, #c9c9c9);
+  color: #111;
+}
+
+.test-image-bubble.dark {
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.test-image-mention {
+  color: #fca311;
+  margin-right: 4px;
+  font-weight: 600;
+}
+
+.test-image-input {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 14px;
+  border-radius: 30px;
+}
+
+.test-image-input input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  outline: none;
+  font-size: 14px;
+}
+
+.test-image-input button {
+  background: transparent;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.test-image-input button:hover {
+  color: #fff;
+}
