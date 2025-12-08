@@ -19,7 +19,7 @@ import {
   Legend
 } from "recharts";
 
-// Enhanced hero with multiple "screens" inside the laptop mockup, small pie charts,
+  // Enhanced hero with multiple "screens" inside the laptop mockup, small pie charts,
 // additional stat cards and improved visual polish.
 export default function EmailValidatorHeroV2() {
   const [stats, setStats] = useState({

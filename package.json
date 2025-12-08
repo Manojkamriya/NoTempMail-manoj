@@ -4,13 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dv": "vite",
+    "dev": "vite",
     "gpom": "git push origin main",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "express": "^5.1.0",
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.553.0",
     "react": "^19.1.1",
