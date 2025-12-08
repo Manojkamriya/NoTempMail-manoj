@@ -81,7 +81,7 @@ export default function EmailValidatorHeroV2() {
     <>
       <style>{styles}</style>
 
-      <div className="min-h-screen py-16 relative overflow-hidden">
+      <div className="min-h-95vh py-16 relative overflow-hidden">
         <video
           src="/grid.webm"
           autoPlay
