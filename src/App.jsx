@@ -1,6 +1,8 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./Navbar";
+import ApiKeys from "./ApiKeys";
+import PricingPage from "./Pricing";
 
 // Lazy-loaded pages
 const Versions = lazy(() => import("./Versions/Version1"));
@@ -24,6 +26,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Versions />} />
           <Route path="/dashboard" element={<Dashboard />} />
+           <Route path="/manage-keys" element={<ApiKeys />} />
+             <Route path="/pricing" element={<PricingPage />} />
           <Route path="/admin-dash" element={<AdminDashboard />} />
           <Route path="/single-verify" element={<SingleVerify />} />
         </Routes>
