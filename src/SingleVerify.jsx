@@ -13,7 +13,6 @@ const SingleVerify = () => {
     setLoading(true);
     setResult(null);
 
-    // Simulated network delay
     setTimeout(() => {
       const mock = {
         email,
@@ -32,31 +31,53 @@ const SingleVerify = () => {
     status === "valid" ? "#10b981" : "#ef4444";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#fafafa] to-[#f0f9ff] p-8">
-      <div className="max-w-3xl mx-auto space-y-8">
+    <div
+      className="min-h-screen p-8"
+      style={{
+        background:
+          "linear-gradient(135deg, #f5f7ff 0%, #eef7ff 40%, #fdf7ff 100%)",
+      }}
+    >
+      <div className="max-w-3xl mx-auto space-y-10">
 
         {/* Page Header */}
-        <div>
-          <h1 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-orange-400">
+        <div className="text-center">
+          <h1
+            className="text-4xl font-extrabold bg-clip-text text-transparent"
+            style={{
+              backgroundImage:
+                "linear-gradient(90deg, #0A84FF, #B45CFF, #FF2D55, #FF9500)",
+            }}
+          >
             Single Email Verification
           </h1>
-          <p className="text-gray-500 mt-1">
-            Test your verification API in real time
+          <p className="text-gray-600 mt-2 text-base">
+            Test your verification API in real time with instant feedback
           </p>
         </div>
 
         {/* Input Card */}
-        <div className="bg-white p-6 rounded-2xl shadow border">
-          <label className="font-medium text-gray-700 block mb-2">
+        <div
+          className="p-8 rounded-3xl shadow-xl border backdrop-blur-md"
+          style={{
+            background: "rgba(255,255,255,0.65)",
+            borderColor: "rgba(0,0,0,0.06)",
+          }}
+        >
+          <label className="font-semibold text-gray-800 block mb-3 text-lg">
             Enter email to verify
           </label>
 
           <div className="relative">
-            <Search className="absolute left-4 top-3 text-gray-400" size={18} />
+            <Search
+              className="absolute left-4 top-3.5 text-gray-400"
+              size={20}
+            />
             <input
               type="email"
               placeholder="e.g. johndoe@gmail.com"
-              className="w-full pl-12 pr-4 py-3 rounded-xl border text-gray-800"
+              className="w-full pl-12 pr-4 py-3.5 rounded-2xl border bg-white/70 text-gray-900 shadow-sm focus:ring-2 focus:ring-blue-400 transition-all"
+              style={{ borderColor: "rgba(0,0,0,0.1)" }}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -65,19 +86,27 @@ const SingleVerify = () => {
           <button
             onClick={verifyEmail}
             disabled={!email.trim() || loading}
-            className="mt-4 px-6 py-3 rounded-xl bg-black text-white font-medium hover:scale-[1.02] transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+            className="mt-5 px-6 py-3.5 rounded-2xl bg-black text-white font-semibold text-sm flex items-center gap-2 transition-all hover:scale-[1.03] disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
           >
-            {loading && <Loader2 className="animate-spin" size={18} />}
+            {loading && <Loader2 className="animate-spin" size={20} />}
             Verify Email
           </button>
         </div>
 
         {/* Result Card */}
         {result && (
-          <div className="bg-white rounded-2xl p-6 shadow border transition-all">
-            <h3 className="text-lg font-bold mb-4">Verification Result</h3>
+          <div
+            className="p-8 rounded-3xl shadow-xl border animate-fadeIn"
+            style={{
+              background: "white",
+              borderColor: "rgba(0,0,0,0.06)",
+            }}
+          >
+            <h3 className="text-xl font-bold mb-5 text-gray-900">
+              Verification Result
+            </h3>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               <InfoRow label="Email" value={result.email} />
               <InfoRow
                 label="Status"
@@ -97,8 +126,11 @@ const SingleVerify = () => {
 
 const InfoRow = ({ label, value, color }) => (
   <div className="flex justify-between items-center py-1">
-    <span className="text-gray-500">{label}</span>
-    <span className="font-semibold" style={{ color: color || "#111" }}>
+    <span className="text-gray-500 text-sm">{label}</span>
+    <span
+      className="font-semibold text-base"
+      style={{ color: color || "#1c1b1b" }}
+    >
       {value}
     </span>
   </div>

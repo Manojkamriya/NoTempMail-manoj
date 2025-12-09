@@ -81,7 +81,7 @@ export default function EmailValidatorHeroV2() {
     <>
       <style>{styles}</style>
 
-      <div className="min-h-95vh py-16 relative overflow-hidden">
+      <div className="min-h-90vh py-10 relative overflow-hidden">
         <video
           src="/grid.webm"
           autoPlay
@@ -97,11 +97,13 @@ export default function EmailValidatorHeroV2() {
             <div className="space-y-6">
               <div className="space-y-2">
                 <h1
-                  className="inline-block text-5xl lg:text-6xl font-extrabold leading-tight bg-clip-text text-transparent"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(90deg, #0A84FF, #B45CFF, #FF2D55, #FF9500)"
-                  }}
+                  className="inline-block text-5xl lg:text-5xl font-extrabold leading-tight bg-clip-text text-transparent"
+                 style={{
+  backgroundImage:
+    "linear-gradient(90deg, #2F96FF, #B97BFF, #FF546F, #FFA647)"
+}}
+
+
                 >
                   Say No To Temporary Email
                 </h1>

@@ -1,0 +1,12 @@
+these are slight soft colors 
+
+style={{
+  backgroundImage:
+    "linear-gradient(90deg, #4FA3FF, #C89BFF, #FF7A8C, #FFB86A)"
+}}
+
+
+
+ these are hard colors 
+
+ style={{ backgroundImage: "linear-gradient(90deg, #0A84FF, #B45CFF, #FF2D55, #FF9500)"

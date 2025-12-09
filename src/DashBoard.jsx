@@ -264,23 +264,7 @@ const Dashboard = () => {
               index={3}
             />
           </div>
-
-          {/* Main Charts Row */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-            <PieChartCard 
-              title="Email Detection Distribution"
-              subtitle="Breakdown of validation results"
-              data={detectionData}
-            />
-            
-            <PieChartCard 
-              title="Top Blocked Domains"
-              subtitle="Most frequent temporary email providers"
-              data={topDomainsData}
-            />
-          </div>
-
-          {/* Second Row */}
+  {/* Second Row */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
             <PieChartCard 
               title="Request Distribution"
@@ -303,6 +287,22 @@ const Dashboard = () => {
               showLegend={false}
             />
           </div>
+          {/* Main Charts Row */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <PieChartCard 
+              title="Email Detection Distribution"
+              subtitle="Breakdown of validation results"
+              data={detectionData}
+            />
+            
+            <PieChartCard 
+              title="Top Blocked Domains"
+              subtitle="Most frequent temporary email providers"
+              data={topDomainsData}
+            />
+          </div>
+
+        
 
           {/* Third Row */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -361,6 +361,150 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10 p-8">
+
+          {/* API Usage Monitor */}
+          <div className="rounded-2xl p-8 bg-white shadow-lg">
+            <h3 className="text-xl font-bold">Real-Time API Usage</h3>
+            <p className="text-gray-600 text-sm mb-4">
+              Current operational load
+            </p>
+
+            {[
+              { label: "Single Verify", value: 76 },
+              { label: "Bulk Check", value: 52 },
+              { label: "Domain Scan", value: 34 }
+            ].map((x, i) => (
+              <div key={i} className="mb-4">
+                <div className="flex justify-between text-sm">
+                  <span>{x.label}</span>
+                  <span>{x.value}%</span>
+                </div>
+                <div className="h-3 bg-gray-100 rounded-full">
+                  <div
+                    className="h-full rounded-full"
+                    style={{
+                      width: `${x.value}%`,
+                      background: `linear-gradient(90deg, ${PALETTE[i]}, ${PALETTE[(i+1)%PALETTE.length]})`
+                    }}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Accuracy Gauge */}
+          <div className="rounded-2xl p-8 bg-white shadow-lg">
+            <h3 className="text-xl font-bold">Detection Accuracy</h3>
+            <p className="text-gray-600 text-sm mb-4">Model performance</p>
+
+            <ResponsiveContainer width="100%" height={230}>
+              <PieChart>
+                <Pie
+                  startAngle={180}
+                  endAngle={0}
+                  data={[
+                    { value: 92, color: PALETTE[4] },
+                    { value: 8, color: "#e5e7eb" }
+                  ]}
+                  dataKey="value"
+                  innerRadius={70}
+                  outerRadius={100}
+                >
+                  <Cell fill={PALETTE[4]} />
+                  <Cell fill="#e5e7eb" />
+                </Pie>
+              </PieChart>
+            </ResponsiveContainer>
+
+            <div className="text-center -mt-10">
+              <p className="text-3xl font-bold" style={{ color: PALETTE[4] }}>
+                92%
+              </p>
+              <p className="text-sm text-gray-600">Accuracy</p>
+            </div>
+          </div>
+
+          {/* Region Traffic */}
+          <div className="rounded-2xl p-8 bg-white shadow-lg">
+            <h3 className="text-xl font-bold">Traffic by Region</h3>
+            <p className="text-gray-600 text-sm mb-4">
+              Last 24 hours
+            </p>
+
+            {[
+              { region: "US", value: 58 },
+              { region: "Europe", value: 21 },
+              { region: "Asia", value: 15 },
+              { region: "India", value: 12 }
+            ].map((r, i) => (
+              <div key={i} className="mb-4">
+                <div className="flex justify-between text-sm mb-1">
+                  <span>{r.region}</span>
+                  <span>{r.value}%</span>
+                </div>
+
+                <div className="h-3 bg-gray-100 rounded-full">
+                  <div
+                    className="h-full rounded-full"
+                    style={{
+                      width: `${r.value}%`,
+                      background: PALETTE[i % PALETTE.length]
+                    }}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
+        {/* Recent Activity */}
+        <div className="rounded-2xl p-6 bg-white shadow-lg border">
+          <h3 className="text-xl font-bold">Recent Activity</h3>
+          <p className="text-gray-500 text-sm">Latest system events</p>
+
+          <div className="mt-4 space-y-3">
+            {[
+              { type: "Bulk Check", count: "12,320 emails", time: "2 hours ago", status: "success" },
+              { type: "Single Validation", count: "1 email", time: "3 hours ago", status: "blocked" },
+              { type: "Domain Scan", count: "450 domains", time: "5 hours ago", status: "success" }
+            ].map((ev, i) => (
+              <div
+                key={i}
+                className="p-4 rounded-xl flex gap-4 items-center"
+                style={{
+                  background: "rgba(255,255,255,0.7)",
+                  border: "1px solid rgba(0,0,0,0.05)"
+                }}
+              >
+                <div
+                  className="p-2 rounded-xl"
+                  style={{
+                    background:
+                      ev.status === "success"
+                        ? `${PALETTE[4]}22`
+                        : `${PALETTE[2]}22`
+                  }}
+                >
+                  {ev.status === "success" ? (
+                    <CheckCircle color={PALETTE[4]} />
+                  ) : (
+                    <AlertCircle color={PALETTE[2]} />
+                  )}
+                </div>
+
+                <div>
+                  <p className="font-semibold">{ev.type}</p>
+                  <p className="text-sm text-gray-600">
+                    {ev.count} · {ev.time}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
         </div>
       </div>
       
