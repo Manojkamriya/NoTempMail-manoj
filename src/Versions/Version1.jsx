@@ -16,7 +16,7 @@ import {
   Tooltip as RechartTooltip,
   Legend
 } from "recharts";
-
+import Carousel from "../Carousel/Carousel"
 export default function EmailValidatorHeroV2() {
   const [stats, setStats] = useState({
     genuine: 78.5,
@@ -457,6 +457,7 @@ export default function EmailValidatorHeroV2() {
           </div>
         </div>
       </div>
+      <Carousel/>
     </>
   );
 }
